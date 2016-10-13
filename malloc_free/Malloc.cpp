@@ -26,7 +26,6 @@ node *first = NULL;
 int cnt = 0;
 node *create_block(node *prev, size_t size) {	
 	node *p =(node *) sbrk(0);
-	//cnt+=size;P(cnt)P(sbrk(0)) 
 	if (sbrk(BLOCK_SIZE + size) == (void *) -1) exit(4);
 	p -> free = 0;
 	p -> size = size;
@@ -124,6 +123,7 @@ void exam() {
 		cout << p->prev << ' '<<p<<' '<<p->next<<' '<<p->size<<' '<<p->free<<' '<<p->ptr<<endl;
 		p=p->next;
 	}
+	P("End")
 }
 //*/
 
@@ -139,16 +139,6 @@ int main () {
 	free(pp);
 	return 0;
 */
-	char *ch =(char *) malloc(6000000);
-	cout << ch<<endl;
-	P((size_t)sbrk(0));
-	struct rlimit *limit = (struct rlimit *)malloc(sizeof(struct rlimit));
-    getrlimit(RLIMIT_AS, limit);
-    printf("soft limit: %ld, hard limit: %ld\n", limit->rlim_cur, limit->rlim_max-(size_t)(sbrk(0)));
-	return 0;
-	srand((size_t)sbrk(0));
-	P(sbrk(0)) 
-		//srand(0x109c19000);
 	map<int, void *>Map;
 	int tot = 0, ci = 0;;
 	while (1) {
@@ -166,6 +156,6 @@ int main () {
 				Map[cnt] = malloc(cnt);
 			}
 		}
-		cout<<"TOOT:  "<<tot<<"  ci: "<<ci++<<endl;
+		cout<<"TOT:  "<<tot<<"  ci: "<<ci++<<endl;
 	}
 }
